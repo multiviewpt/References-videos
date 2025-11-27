@@ -95,13 +95,19 @@
         /* Container Principal */
         main {
             flex: 1; 
-            padding: 20px;
+            padding: 20px 20px 40px;
             max-width: 1800px; 
             margin: 0 auto; 
             width: 100%;
             display: flex; 
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+        }
+
+        /* Wrapper para centralizar grid e links */
+        .content-wrapper {
+            width: 100%;
+            max-width: 900px; 
         }
 
         /* Grid de Vídeos */
@@ -110,20 +116,20 @@
             grid-template-columns: 1fr;
             gap: 20px;
             width: 100%;
+            margin-bottom: 40px; /* Espaçamento para a seção de links */
         }
 
         @media (min-width: 768px) {
             .video-grid {
-                /* 2 colunas para 7 vídeos (ficará 2x4 com 1 espaço vazio) */
                 grid-template-columns: repeat(2, 1fr);
-                /* Ajustamos a altura para que 4 linhas caibam na tela com scroll se necessário */
                 max-width: 840px; 
+                margin: 0 auto 40px auto;
             }
         }
 
         /* Cartão do Vídeo - Proporção 9:16 (VERTICAL) */
         .video-card {
-            position: relative; /* CRUCIAL para o posicionamento absoluto do iframe */
+            position: relative; 
             background: var(--bg-card);
             border-radius: 10px;
             overflow: hidden;
@@ -131,8 +137,6 @@
             box-shadow: var(--shadow-subtle);
             transition: all 0.3s ease;
             width: 100%;
-            
-            /* FORÇA A PROPORÇÃO 9:16 */
             aspect-ratio: 9 / 16; 
         }
 
@@ -172,7 +176,6 @@
             width: 100%;
             height: 100%;
             border: none;
-            /* Força o iframe a ocupar 100% da área do pai (.video-card) */
             position: absolute; 
             top: 0;
             left: 0;
@@ -193,6 +196,71 @@
             animation: spin 1s cubic-bezier(0.5, 0, 0.5, 1) infinite;
             z-index: 1;
         }
+
+        /* SEÇÃO DE LINKS */
+        .links-section {
+            width: 100%;
+            padding: 20px;
+            background: var(--bg-card);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-subtle);
+            margin: 0 auto; /* Centraliza a seção no wrapper */
+        }
+
+        .links-section h2 {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .link-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: #1f242c; /* Fundo do card ligeiramente mais claro */
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--accent-primary);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: left; /* Garante que o texto comece à esquerda */
+        }
+
+        .link-card:hover {
+            background: #252a33;
+            border-color: var(--accent-primary);
+            transform: translateX(5px);
+            color: #ffffff; /* Brilho no texto ao passar o mouse */
+        }
+
+        .link-icon {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            margin-left: 10px;
+            flex-shrink: 0; /* Impede o ícone de ser esmagado */
+        }
+
+        .link-card:hover .link-icon {
+            opacity: 1;
+        }
+        /* FIM SEÇÃO DE LINKS */
+
 
         /* Rodapé com QR Code */
         footer {
@@ -241,85 +309,107 @@
     </header>
 
     <main>
-        <div class="video-grid">
-            <!-- VÍDEO 1 -->
-            <div class="video-card">
-                <div class="cam-label">VÍDEO #1</div>
-                <div class="loader"></div>
-                <iframe 
-                    src="https://drive.google.com/file/d/1-Us8kEdqnUB1fS7pHf-nyVQeFY79twuk/preview" 
-                    allow="autoplay; fullscreen"
-                    title="Vídeo 1">
-                </iframe>
-            </div>
+        <div class="content-wrapper">
+            <!-- SEÇÃO DE VÍDEOS -->
+            <div class="video-grid">
+                <!-- VÍDEO 1 -->
+                <div class="video-card">
+                    <div class="cam-label">VÍDEO #1</div>
+                    <div class="loader"></div>
+                    <iframe 
+                        src="https://drive.google.com/file/d/1-Us8kEdqnUB1fS7pHf-nyVQeFY79twuk/preview" 
+                        allow="autoplay; fullscreen"
+                        title="Vídeo 1">
+                    </iframe>
+                </div>
 
-            <!-- VÍDEO 2 -->
-            <div class="video-card">
-                <div class="cam-label">VÍDEO #2</div>
-                <div class="loader"></div>
-                <iframe 
-                    src="https://drive.google.com/file/d/17UDo_PqC8B5kdhGHzHeAXUpdyzPG-1ok/preview" 
-                    allow="autoplay; fullscreen"
-                    title="Vídeo 2">
-                </iframe>
-            </div>
+                <!-- VÍDEO 2 -->
+                <div class="video-card">
+                    <div class="cam-label">VÍDEO #2</div>
+                    <div class="loader"></div>
+                    <iframe 
+                        src="https://drive.google.com/file/d/17UDo_PqC8B5kdhGHzHeAXUpdyzPG-1ok/preview" 
+                        allow="autoplay; fullscreen"
+                        title="Vídeo 2">
+                    </iframe>
+                </div>
 
-            <!-- VÍDEO 3 -->
-            <div class="video-card">
-                <div class="cam-label">VÍDEO #3</div>
-                <div class="loader"></div>
-                <iframe 
-                    src="https://drive.google.com/file/d/1EjVlzLaBA5jTv__tKuZuVTFx8Ob1TFQu/preview" 
-                    allow="autoplay; fullscreen"
-                    title="Vídeo 3">
-                </iframe>
-            </div>
+                <!-- VÍDEO 3 -->
+                <div class="video-card">
+                    <div class="cam-label">VÍDEO #3</div>
+                    <div class="loader"></div>
+                    <iframe 
+                        src="https://drive.google.com/file/d/1EjVlzLaBA5jTv__tKuZuVTFx8Ob1TFQu/preview" 
+                        allow="autoplay; fullscreen"
+                        title="Vídeo 3">
+                    </iframe>
+                </div>
 
-            <!-- VÍDEO 4 -->
-            <div class="video-card">
-                <div class="cam-label">VÍDEO #4</div>
-                <div class="loader"></div>
-                <iframe 
-                    src="https://drive.google.com/file/d/1Tox2bVg95vZ0iQ0idDC6zVziT9Jq1oiu/preview" 
-                    allow="autoplay; fullscreen"
-                    title="Vídeo 4">
-                </iframe>
-            </div>
+                <!-- VÍDEO 4 -->
+                <div class="video-card">
+                    <div class="cam-label">VÍDEO #4</div>
+                    <div class="loader"></div>
+                    <iframe 
+                        src="https://drive.google.com/file/d/1Tox2bVg95vZ0iQ0idDC6zVziT9Jq1oiu/preview" 
+                        allow="autoplay; fullscreen"
+                        title="Vídeo 4">
+                    </iframe>
+                </div>
 
-            <!-- VÍDEO 5 -->
-            <div class="video-card">
-                <div class="cam-label">VÍDEO #5</div>
-                <div class="loader"></div>
-                <iframe 
-                    src="https://drive.google.com/file/d/1HRYng__qWGTvmduwGiPHR8hgsWKEPQnJ/preview" 
-                    allow="autoplay; fullscreen"
-                    title="Vídeo 5">
-                </iframe>
-            </div>
+                <!-- VÍDEO 5 -->
+                <div class="video-card">
+                    <div class="cam-label">VÍDEO #5</div>
+                    <div class="loader"></div>
+                    <iframe 
+                        src="https://drive.google.com/file/d/1HRYng__qWGTvmduwGiPHR8hgsWKEPQnJ/preview" 
+                        allow="autoplay; fullscreen"
+                        title="Vídeo 5">
+                    </iframe>
+                </div>
 
-            <!-- VÍDEO 6 -->
-            <div class="video-card">
-                <div class="cam-label">VÍDEO #6</div>
-                <div class="loader"></div>
-                <iframe 
-                    src="https://drive.google.com/file/d/1VD5UGY-1wupU95AWDD_FdMA18Gr1RvUl/preview" 
-                    allow="autoplay; fullscreen"
-                    title="Vídeo 6">
-                </iframe>
-            </div>
+                <!-- VÍDEO 6 -->
+                <div class="video-card">
+                    <div class="cam-label">VÍDEO #6</div>
+                    <div class="loader"></div>
+                    <iframe 
+                        src="https://drive.google.com/file/d/1VD5UGY-1wupU95AWDD_FdMA18Gr1RvUl/preview" 
+                        allow="autoplay; fullscreen"
+                        title="Vídeo 6">
+                    </iframe>
+                </div>
 
-            <!-- VÍDEO 7 -->
-            <div class="video-card">
-                <div class="cam-label">VÍDEO #7</div>
-                <div class="loader"></div>
-                <iframe 
-                    src="https://drive.google.com/file/d/1ozQHVBLA-fmv_KuRDMcZNDyoyLii2FBX/preview" 
-                    allow="autoplay; fullscreen"
-                    title="Vídeo 7">
-                </iframe>
+                <!-- VÍDEO 7 -->
+                <div class="video-card">
+                    <div class="cam-label">VÍDEO #7</div>
+                    <div class="loader"></div>
+                    <iframe 
+                        src="https://drive.google.com/file/d/1ozQHVBLA-fmv_KuRDMcZNDyoyLii2FBX/preview" 
+                        allow="autoplay; fullscreen"
+                        title="Vídeo 7">
+                    </iframe>
+                </div>
             </div>
-            
-            <!-- OBS: O GRID lidará com o 7º item, deixando o 8º espaço vazio se o grid for 2x4 -->
+            <!-- FIM SEÇÃO DE VÍDEOS -->
+
+
+            <!-- SEÇÃO DE LINKS GOVERNAMENTAIS -->
+            <div class="links-section">
+                <h2>REFERÊNCIAS BIBLIOGRÁFICAS</h2>
+                <div class="link-list">
+                    
+                    <a href="https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/avaliacao-da-alfabetizacao/resultados" target="_blank" class="link-card">
+                        <span>INEP - Avaliação da Alfabetização / Resultados</span>
+                        <span class="link-icon">&rarr;</span>
+                    </a>
+                    
+                    <a href="https://avaliacaoemonitoramentosergipe.caeddigital.net/#!/pagina/VIEW_RES_SOM_M230124?DADOS.VL_FILTRO_AVALIACAO=19631&DADOS.VL_FILTRO_ETAPA=ENSINO%20FUNDAMENTAL%20DE%209%20ANOS%20%202%C2%BA%20ANO&DADOS.VL_FILTRO_DISCIPLINA=LP&DADOS.VL_FILTRO_REDE=MUNICIPAL&DADOS.DC_FAIXA_PERCENTUAL_HABILIDADE=Alto-M%C3%A9dio%20Baixo-M%C3%A9dio%20Alto-Baixo" target="_blank" class="link-card">
+                        <span>CAEd Sergipe - Resultados de Avaliação (Língua Portuguesa - 2º Ano)</span>
+                        <span class="link-icon">&rarr;</span>
+                    </a>
+                    
+                </div>
+            </div>
+            <!-- FIM SEÇÃO DE LINKS -->
         </div>
     </main>
 
