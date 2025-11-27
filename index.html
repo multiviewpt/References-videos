@@ -3,32 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitoramento Multi-View</title>
-    
-    <!-- Fonte Moderna do Google -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --accent: #3b82f6;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --glow: rgba(59, 130, 246, 0.5);
-        }
-
-        * {
-            box-siz…
-[10:16, 27/11/2025] Luiz Neto: https://worksemedluiz-droid.github.io/References-videos/
-[10:23, 27/11/2025] Luiz Neto: <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitoramento Multi-View - Otimizado</title>
+    <title>Monitoramento Multi-View - Responsivo</title>
     
     <!-- Fonte Inter para tipografia moderna -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,7 +24,7 @@
             --shadow-glow: 0 0 10px rgba(88, 166, 255, 0.3);
         }
 
-        /* Reset e Base - Correção de Centralização/Overflow */
+        /* Reset e Base */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -57,7 +32,7 @@
         }
 
         html, body {
-            height: 100%; /* Garante que a raiz ocupe a tela toda */
+            height: 100%;
             width: 100%;
         }
 
@@ -68,7 +43,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            overflow-x: hidden; /* Garante que não haverá rolagem horizontal */
+            overflow-x: hidden; 
             background-image: radial-gradient(circle at 1% 1%, var(--bg-card) 1px, transparent 0);
             background-size: 20px 20px;
         }
@@ -78,7 +53,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 1rem 20px; /* Padding ajustado */
             background: var(--bg-header);
             backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border-color);
@@ -117,14 +92,16 @@
             text-transform: uppercase;
         }
 
-        /* Container Principal */
+        /* Container Principal - Flexível para preencher o espaço restante */
         main {
-            flex: 1;
+            flex: 1; /* Permite que o MAIN cresça e preencha o espaço */
             padding: 20px;
-            max-width: 1800px; /* Limite de largura para telas muito grandes */
-            margin: 0 auto; /* Centraliza o bloco principal */
+            max-width: 1800px; 
+            margin: 0 auto; 
             width: 100%;
-            display: block;
+            display: flex; /* Adicionado para centralizar o grid */
+            justify-content: center;
+            align-items: center;
         }
 
         /* Grid de Vídeos */
@@ -137,14 +114,19 @@
 
         @media (min-width: 768px) {
             .video-grid {
-                /* 2 colunas no desktop */
                 grid-template-columns: repeat(2, 1fr);
-                /* Ajusta a altura total da grade para que ela preencha a tela */
-                height: calc(100vh - 140px); 
+                /* Usamos MIN-HEIGHT para não depender de cálculos VH problemáticos no iOS */
+                min-height: calc(100vh - 140px);
+                max-width: 800px; /* Limita a largura total do grid no desktop */
+            }
+
+            /* Centraliza o grid dentro do MAIN no desktop */
+            main {
+                align-items: center; 
             }
         }
 
-        /* Cartão do Vídeo - CORREÇÃO DE ASPECT RATIO PARA VERTICAL */
+        /* Cartão do Vídeo - CORREÇÃO DE ASPECT RATIO E TAMANHO MÁXIMO */
         .video-card {
             position: relative;
             background: var(--bg-card);
@@ -160,14 +142,15 @@
             aspect-ratio: 9 / 16; 
         }
 
-        /* No desktop, se a altura for a limitação, o iframe deve se ajustar ao espaço */
         @media (min-width: 768px) {
             .video-card {
-                 /* Se a tela for larga, permite que o grid defina o tamanho */
-                aspect-ratio: 9 / 16;
+                 /* Limita o tamanho máximo de cada cartão no PC, para não ficarem absurdamente altos */
+                max-width: 400px;
+                /* Centraliza os cartões dentro de cada célula do grid (se forem menores que a célula) */
+                justify-self: center; 
             }
         }
-
+        
         /* Efeito de Hover/Foco */
         .video-card:hover {
             border-color: var(--accent-primary);
