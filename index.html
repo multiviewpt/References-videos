@@ -1,18 +1,4 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Página com 4 vídeos — 2x2</title>
-  <style>
-    :root{--gap:12px;--bg:#0f1724;--card:#0b1220;--text:#e6eef8}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071129 0%, #071831 100%);font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:var(--text)}
-    .wrap{max-width:1100px;margin:28px auto;padding:18px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    header h1{margin:0;font-size:18px}
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gap);margin-top:18px}
-    .card{background:rgba(255,255,255,0.03);border-radius:10px;padding:8p…
-[09:41, 27/11/2025] Luiz Neto: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -35,42 +21,79 @@
         }
 
         * {
+            box-siz…
+[10:16, 27/11/2025] Luiz Neto: https://worksemedluiz-droid.github.io/References-videos/
+[10:23, 27/11/2025] Luiz Neto: <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento Multi-View - Otimizado</title>
+    
+    <!-- Fonte Inter para tipografia moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variáveis CSS para gerenciamento de cores */
+        :root {
+            --bg-deep: #0d1117; 
+            --bg-card: #161b22; 
+            --bg-header: rgba(22, 27, 34, 0.95); 
+            --accent-primary: #58a6ff; 
+            --text-primary: #c9d1d9; 
+            --text-secondary: #8b949e; 
+            --border-color: #30363d;
+            --shadow-subtle: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --shadow-glow: 0 0 10px rgba(88, 166, 255, 0.3);
+        }
+
+        /* Reset e Base - Correção de Centralização/Overflow */
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        html, body {
+            height: 100%; /* Garante que a raiz ocupe a tela toda */
+            width: 100%;
+        }
+
         body {
-            background-color: var(--bg-color);
-            background-image: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
+            background-color: var(--bg-deep);
             font-family: 'Inter', sans-serif;
             color: var(--text-primary);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Garante que não haverá rolagem horizontal */
+            background-image: radial-gradient(circle at 1% 1%, var(--bg-card) 1px, transparent 0);
+            background-size: 20px 20px;
         }
 
-        /* Cabeçalho Estilizado */
+        /* Cabeçalho */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--bg-header);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 100;
         }
 
         h1 {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         h1::before {
@@ -78,31 +101,30 @@
             display: block;
             width: 10px;
             height: 10px;
-            background-color: #ef4444; /* Ponto vermelho de 'Rec' */
+            background-color: #f85149; 
             border-radius: 50%;
-            box-shadow: 0 0 10px #ef4444;
+            box-shadow: 0 0 8px 1px #f85149;
             animation: pulse 2s infinite;
         }
 
         .status-badge {
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent);
-            padding: 4px 12px;
-            border-radius: 20px;
+            background: var(--accent-primary);
+            color: var(--bg-deep);
+            padding: 6px 16px;
+            border-radius: 4px;
             font-size: 0.8rem;
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
         /* Container Principal */
         main {
             flex: 1;
             padding: 20px;
-            max-width: 1920px;
-            margin: 0 auto;
+            max-width: 1800px; /* Limite de largura para telas muito grandes */
+            margin: 0 auto; /* Centraliza o bloco principal */
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            display: block;
         }
 
         /* Grid de Vídeos */
@@ -111,61 +133,66 @@
             grid-template-columns: 1fr;
             gap: 20px;
             width: 100%;
-            height: 100%;
         }
 
         @media (min-width: 768px) {
             .video-grid {
+                /* 2 colunas no desktop */
                 grid-template-columns: repeat(2, 1fr);
-                /* Ajusta altura para caber na tela se possível */
+                /* Ajusta a altura total da grade para que ela preencha a tela */
                 height: calc(100vh - 140px); 
             }
         }
 
-        /* Cartão do Vídeo */
+        /* Cartão do Vídeo - CORREÇÃO DE ASPECT RATIO PARA VERTICAL */
         .video-card {
             position: relative;
-            background: #000;
-            border-radius: 12px;
+            background: var(--bg-card);
+            border-radius: 10px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-subtle);
             transition: all 0.3s ease;
             width: 100%;
             height: 100%;
-            /* Aspect ratio fallback para mobile */
-            aspect-ratio: 16/9; 
+            
+            /* FORÇA A PROPORÇÃO 9:16 (VERTICAL) */
+            aspect-ratio: 9 / 16; 
         }
 
+        /* No desktop, se a altura for a limitação, o iframe deve se ajustar ao espaço */
         @media (min-width: 768px) {
             .video-card {
-                aspect-ratio: auto; /* Deixa o grid controlar a altura no desktop */
+                 /* Se a tela for larga, permite que o grid defina o tamanho */
+                aspect-ratio: 9 / 16;
             }
         }
 
-        /* Efeito de Hover e Foco */
+        /* Efeito de Hover/Foco */
         .video-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 20px var(--glow);
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-glow);
             transform: scale(1.005);
             z-index: 2;
         }
 
-        /* Label do Vídeo (Canto superior esquerdo) */
+        /* Label da Câmera */
         .cam-label {
             position: absolute;
             top: 10px;
             left: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #ffffff;
             z-index: 5;
             pointer-events: none;
+            letter-spacing: 0.5px;
         }
 
+        /* Iframe do Vídeo */
         iframe {
             width: 100%;
             height: 100%;
@@ -174,27 +201,27 @@
             z-index: 2;
         }
 
-        /* Loader (aparece atrás do iframe enquanto carrega) */
+        /* Loader */
         .loader {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            border: 3px solid rgba(255,255,255,0.1);
-            border-top-color: var(--accent);
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--accent-primary);
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 1s cubic-bezier(0.5, 0, 0.5, 1) infinite;
             z-index: 1;
         }
 
-        /* Rodapé */
+        /* Rodapé com QR Code */
         footer {
-            background: rgba(15, 23, 42, 0.95);
+            background: var(--bg-card);
             padding: 15px;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid var(--border-color);
             font-size: 0.9rem;
             color: var(--text-secondary);
         }
@@ -209,16 +236,17 @@
 
         .qr-box {
             background: white;
-            padding: 8px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid #ddd;
         }
 
         /* Animações */
         @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+            0% { box-shadow: 0 0 8px 1px #f85149; }
+            50% { box-shadow: 0 0 12px 2px #f85149; }
+            100% { box-shadow: 0 0 8px 1px #f85149; }
         }
 
         @keyframes spin {
@@ -230,49 +258,53 @@
 <body>
 
     <header>
-        <h1>Central de Vídeo</h1>
-        <div class="status-badge">● AO VIVO (Simulado)</div>
+        <h1>Painel de Vigilância</h1>
+        <div class="status-badge">ONLINE</div>
     </header>
 
     <main>
         <div class="video-grid">
-            <!-- Cam 1 -->
+            <!-- Cam 1 (Vertical - 9:16) -->
             <div class="video-card">
-                <div class="cam-label">CAM 01</div>
+                <div class="cam-label">STREAM #1 / Entrada Principal</div>
                 <div class="loader"></div>
                 <iframe 
                     src="https://drive.google.com/file/d/1-Us8kEdqnUB1fS7pHf-nyVQeFY79twuk/preview" 
-                    allow="autoplay; fullscreen">
+                    allow="autoplay; fullscreen"
+                    title="Vídeo 1">
                 </iframe>
             </div>
 
-            <!-- Cam 2 -->
+            <!-- Cam 2 (Vertical - 9:16) -->
             <div class="video-card">
-                <div class="cam-label">CAM 02</div>
+                <div class="cam-label">STREAM #2 / Fundos</div>
                 <div class="loader"></div>
                 <iframe 
                     src="https://drive.google.com/file/d/17UDo_PqC8B5kdhGHzHeAXUpdyzPG-1ok/preview" 
-                    allow="autoplay; fullscreen">
+                    allow="autoplay; fullscreen"
+                    title="Vídeo 2">
                 </iframe>
             </div>
 
-            <!-- Cam 3 -->
+            <!-- Cam 3 (Vertical - 9:16) -->
             <div class="video-card">
-                <div class="cam-label">CAM 03</div>
+                <div class="cam-label">STREAM #3 / Corredor A</div>
                 <div class="loader"></div>
                 <iframe 
                     src="https://drive.google.com/file/d/1EjVlzLaBA5jTv__tKuZuVTFx8Ob1TFQu/preview" 
-                    allow="autoplay; fullscreen">
+                    allow="autoplay; fullscreen"
+                    title="Vídeo 3">
                 </iframe>
             </div>
 
-            <!-- Cam 4 -->
+            <!-- Cam 4 (Vertical - 9:16) -->
             <div class="video-card">
-                <div class="cam-label">CAM 04</div>
+                <div class="cam-label">STREAM #4 / Área de Serviço</div>
                 <div class="loader"></div>
                 <iframe 
                     src="https://drive.google.com/file/d/1Tox2bVg95vZ0iQ0idDC6zVziT9Jq1oiu/preview" 
-                    allow="autoplay; fullscreen">
+                    allow="autoplay; fullscreen"
+                    title="Vídeo 4">
                 </iframe>
             </div>
         </div>
@@ -280,7 +312,7 @@
 
     <footer>
         <div class="qr-section">
-            <p>Compartilhar visualização:</p>
+            <p>Escanear para Acesso Móvel (QR Code da URL Hospedada):</p>
             <div class="qr-box">
                 <img id="qrImage" src="" alt="Gerando QR Code..." width="120" height="120">
             </div>
@@ -288,18 +320,19 @@
     </footer>
 
     <script>
-        // Gera o QR Code automaticamente baseado na URL onde o site for hospedado
+        // Script para gerar o QR Code da URL hospedada
         window.onload = function() {
             const currentUrl = window.location.href;
             const qrImage = document.getElementById('qrImage');
             
-            // API pública de QR Code
             if (currentUrl.startsWith('http')) {
+                // API de QR Code para a URL online
                 qrImage.src = https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(currentUrl)}&margin=10;
+                qrImage.alt = "QR Code para esta página";
             } else {
-                // Placeholder caso esteja abrindo direto do arquivo no PC
-                qrImage.alt = "Hospede para ver o QR";
-                qrImage.src = "https://placehold.co/150x150/EEE/31343C?text=Preview";
+                // Placeholder para quando o arquivo é aberto localmente
+                qrImage.alt = "Hospede o site para gerar o QR Code funcional";
+                qrImage.src = "https://placehold.co/150x150/161b22/8b949e?text=HOSPEDE+O+SITE";
             }
         };
     </script>
